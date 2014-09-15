@@ -1,0 +1,10 @@
+{
+	"name" : "WorkoutTracker",
+	"version": "0.1",
+	"dependencies" : {
+		"marionette" : "latest"
+	},
+	"install" : {
+		"path" : "app/assets/js/vendor"
+	}
+}
