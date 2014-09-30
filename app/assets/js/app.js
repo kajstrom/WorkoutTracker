@@ -17,6 +17,8 @@ WorkoutTracker.on("start", function(){
 	if(Backbone.history){
 		Backbone.history.start();
 
+		console.log("Started!");
+
 		if(this.getCurrentRoute() === ""){
 			//Trigger default route.
 		}

@@ -40,5 +40,20 @@
     </div>
 </div>
 
+<!-- Libraries -->
+<script src="assets/js/vendor/jquery/jquery.js"></script>
+<script src="assets/js/vendor/underscore/underscore.js"></script>
+<script src="assets/js/vendor/backbone/backbone.js"></script>
+<script src="assets/js/vendor/backbone.babysitter/backbone.babysitter.js"></script>
+<script src="assets/js/vendor/backbone.wreqr/backbone.wreqr.js"></script>
+<script src="assets/js/vendor/marionette/backbone.marionette.js"></script>
+
+<!-- Application files -->
+<script src="assets/js/app.js"></script>
+
+
+<script>
+    WorkoutTracker.start();
+</script>
 </body>
 </html>
