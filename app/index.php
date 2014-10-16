@@ -36,7 +36,7 @@
         </ul>
     </div>
     <div class="col-md-10 main-region">
-        <h1>Content be hereg</h1>
+        <h1>Content be here</h1>
     </div>
 </div>
 
@@ -50,7 +50,7 @@
 
 <!-- Application files -->
 <script src="assets/js/app.js"></script>
-
+<script src="assets/js/entities/exercise.js"></script>
 
 <script>
     WorkoutTracker.start();
