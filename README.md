@@ -1,2 +1,5 @@
 WorkoutTracker
 ==============
+
+## Installation
+    $ bower install
