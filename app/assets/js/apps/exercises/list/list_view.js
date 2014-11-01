@@ -23,9 +23,17 @@ WorkoutTracker.module("ExercisesApp.List", function (List, WorkoutTracker, Backb
 	List.TableRow = Marionette.ItemView.extend({
 		tagName: "tr",
 		template: "#exercise-list-table-row",
+		events: {
+			"click .js-delete": "deleteClicked"
+		},
 		triggers: {
-			"click .js-edit": "edit",
-			"click .js-delete": "delete"
+			"click .js-edit": "edit"
+		},
+
+		deleteClicked: function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			this.model.destroy();
 		}
 	});
 

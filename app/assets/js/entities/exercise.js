@@ -5,7 +5,8 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 	});
 
 	Entities.ExerciseCollection = Backbone.Collection.extend({
-		url: "api/exercises"
+		url: "api/exercises",
+		model: Entities.Exercise
 	});
 
 	var API = {
