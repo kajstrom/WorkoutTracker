@@ -47,13 +47,13 @@ require_once "../src/TemplateLoader.php";
 <div class="dialog-region"></div>
 
 <!-- Libraries -->
-<script src="assets/js/vendor/jquery/jquery.js"></script>
-<script src="assets/js/vendor/underscore/underscore.js"></script>
-<script src="assets/js/vendor/backbone/backbone.js"></script>
-<script src="assets/js/vendor/backbone.babysitter/backbone.babysitter.js"></script>
-<script src="assets/js/vendor/backbone.wreqr/backbone.wreqr.js"></script>
-<script src="assets/js/vendor/marionette/backbone.marionette.js"></script>
-<script src="assets/js/vendor/backbone.syphon/backbone.syphon.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/backbone/backbone.js"></script>
+<script src="../bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+<script src="../bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+<script src="../bower_components/marionette/lib/core/backbone.marionette.js"></script>
+<script src="../bower_components/backbone.syphon/lib/backbone.syphon.js"></script>
 
 <!-- Application files -->
 <script src="assets/js/app.js"></script>
