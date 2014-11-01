@@ -1,7 +1,8 @@
 var WorkoutTracker = new Marionette.Application();
 
 WorkoutTracker.addRegions({
-	mainRegion: ".main-region"
+	mainRegion: ".main-region",
+	dialogRegion: ".dialog-region"
 });
 
 WorkoutTracker.navigate = function(route,  options){
