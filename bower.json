@@ -2,7 +2,8 @@
 	"name" : "WorkoutTracker",
 	"version": "0.1",
 	"dependencies" : {
-		"marionette" : "latest"
+		"marionette" : "latest",
+		"backbone.syphon": "marionettejs/backbone.syphon#v0.5.0"
 	},
 	"install" : {
 		"path" : "app/assets/js/vendor"

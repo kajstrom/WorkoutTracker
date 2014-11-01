@@ -44,6 +44,8 @@ require_once "../src/TemplateLoader.php";
     </div>
 </div>
 
+<div class="dialog-region"></div>
+
 <!-- Libraries -->
 <script src="assets/js/vendor/jquery/jquery.js"></script>
 <script src="assets/js/vendor/underscore/underscore.js"></script>
@@ -51,11 +53,15 @@ require_once "../src/TemplateLoader.php";
 <script src="assets/js/vendor/backbone.babysitter/backbone.babysitter.js"></script>
 <script src="assets/js/vendor/backbone.wreqr/backbone.wreqr.js"></script>
 <script src="assets/js/vendor/marionette/backbone.marionette.js"></script>
+<script src="assets/js/vendor/backbone.syphon/backbone.syphon.js"></script>
 
 <!-- Application files -->
 <script src="assets/js/app.js"></script>
+<script src="assets/js/apps/config/marionette/regions/dialog.js"></script>
+<script src="assets/js/apps/exercises/common/views.js"></script>
 <script src="assets/js/apps/exercises/list/list_controller.js"></script>
 <script src="assets/js/apps/exercises/list/list_view.js"></script>
+<script src="assets/js/apps/exercises/new/new_controller.js"></script>
 <script src="assets/js/apps/exercises/exercises_app.js"></script>
 <script src="assets/js/entities/exercise.js"></script>
 
