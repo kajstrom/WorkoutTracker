@@ -2,7 +2,8 @@ WorkoutTracker.module("ExercisesApp", function (ExercisesApp, WorkoutTracker, Ba
 	ExercisesApp.Router = Marionette.AppRouter.extend({
 		appRoutes: {
 			"exercises": "listExercises",
-			"exercises/new": "newExercise"
+			"exercises/new": "newExercise",
+			"exercises/edit": "editExercise"
 		}
 	});
 
@@ -12,6 +13,9 @@ WorkoutTracker.module("ExercisesApp", function (ExercisesApp, WorkoutTracker, Ba
 		},
 		newExercise: function () {
 			ExercisesApp.New.Controller.newExercise();
+		},
+		editExercise: function (model) {
+			ExercisesApp.Edit.Controller.editExercise(model);
 		}
 	};
 
@@ -23,6 +27,12 @@ WorkoutTracker.module("ExercisesApp", function (ExercisesApp, WorkoutTracker, Ba
 	WorkoutTracker.on("exercises:new", function () {
 		WorkoutTracker.navigate("exercises/new");
 		API.newExercise();
+	});
+
+	WorkoutTracker.on("exercises:edit", function(attrs) {
+		//@todo Change this to support the id too?
+		WorkoutTracker.navigate("exercises/edit");
+		API.editExercise(attrs.model);
 	});
 
 	WorkoutTracker.addInitializer(function () {

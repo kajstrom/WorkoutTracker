@@ -24,10 +24,13 @@ WorkoutTracker.module("ExercisesApp.List", function (List, WorkoutTracker, Backb
 		tagName: "tr",
 		template: "#exercise-list-table-row",
 		events: {
-			"click .js-delete": "deleteClicked"
+			"click .js-delete": "deleteClicked",
+			"click .js-edit": "editClicked"
 		},
-		triggers: {
-			"click .js-edit": "edit"
+
+		editClicked: function (e) {
+			e.preventDefault();
+			WorkoutTracker.trigger("exercises:edit", {model: this.model});
 		},
 
 		deleteClicked: function (e) {

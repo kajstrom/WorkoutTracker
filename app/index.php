@@ -62,6 +62,7 @@ require_once "../src/TemplateLoader.php";
 <script src="assets/js/apps/exercises/list/list_controller.js"></script>
 <script src="assets/js/apps/exercises/list/list_view.js"></script>
 <script src="assets/js/apps/exercises/new/new_controller.js"></script>
+<script src="assets/js/apps/exercises/edit/edit_controller.js"></script>
 <script src="assets/js/apps/exercises/exercises_app.js"></script>
 <script src="assets/js/entities/exercise.js"></script>
 
