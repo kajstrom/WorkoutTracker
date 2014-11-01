@@ -10,12 +10,23 @@ WorkoutTracker.module("ExercisesApp.List", function (List, WorkoutTracker, Backb
 
 	List.Filter = Marionette.ItemView.extend({
 		className: "row",
-		template: "#exercise-list-filter"
+		template: "#exercise-list-filter",
+		events: {
+			"click .js-add": "addExercise"
+		},
+
+		addExercise: function () {
+			WorkoutTracker.trigger("exercises:new");
+		}
 	});
 
 	List.TableRow = Marionette.ItemView.extend({
 		tagName: "tr",
-		template: "#exercise-list-table-row"
+		template: "#exercise-list-table-row",
+		triggers: {
+			"click .js-edit": "edit",
+			"click .js-delete": "delete"
+		}
 	});
 
 	List.Table = Marionette.CompositeView.extend({
