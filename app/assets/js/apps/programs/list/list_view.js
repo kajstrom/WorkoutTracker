@@ -10,7 +10,14 @@ WorkoutTracker.module("ProgramsApp.List", function (List, WorkoutTracker, Backbo
 
     List.Filter = Marionette.ItemView.extend({
         className: "row",
-        template: "#program-list-filter"
+        template: "#program-list-filter",
+        events: {
+            "click .js-add": "addProgram"
+        },
+
+        addProgram: function () {
+            WorkoutTracker.trigger("programs:new");
+        }
     });
 
     List.TableRow = Marionette.ItemView.extend({
