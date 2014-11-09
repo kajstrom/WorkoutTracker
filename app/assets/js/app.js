@@ -2,6 +2,7 @@ var WorkoutTracker = new Marionette.Application();
 
 WorkoutTracker.addRegions({
 	mainRegion: ".main-region",
+	menuRegion: ".menu-region",
 	dialogRegion: ".dialog-region"
 });
 
@@ -21,7 +22,7 @@ WorkoutTracker.on("start", function(){
 		console.log("Started!");
 
 		if(this.getCurrentRoute() === ""){
-			//Trigger default route.
+			WorkoutTracker.trigger("programs:list");
 		}
 	}
 });

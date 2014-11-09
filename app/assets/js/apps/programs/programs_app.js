@@ -18,6 +18,7 @@ WorkoutTracker.module("ProgramsApp", function (ProgramsApp, WorkoutTracker, Back
 
     WorkoutTracker.on("programs:list", function () {
         WorkoutTracker.navigate("programs");
+		WorkoutTracker.execute("sec:active:menu", "programs");
         API.listPrograms();
     });
 

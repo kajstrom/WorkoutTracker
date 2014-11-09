@@ -34,10 +34,7 @@ require_once "../src/TemplateLoader.php";
 
 <div class="container-fluid">
     <div class="col-md-2 menu-region">
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Exercises</a></li>
-        </ul>
+
     </div>
     <div class="col-md-10 main-region">
         <h1>Content be here</h1>
@@ -58,6 +55,12 @@ require_once "../src/TemplateLoader.php";
 <!-- Application files -->
 <script src="assets/js/app.js"></script>
 <script src="assets/js/apps/config/marionette/regions/dialog.js"></script>
+
+<script src="assets/js/entities/menu.js"></script>
+<script src="assets/js/apps/menu/list/list_view.js"></script>
+<script src="assets/js/apps/menu/list/list_controller.js"></script>
+<script src="assets/js/apps/menu/menu_app.js"></script>
+
 <script src="assets/js/apps/exercises/common/views.js"></script>
 <script src="assets/js/apps/exercises/list/list_controller.js"></script>
 <script src="assets/js/apps/exercises/list/list_view.js"></script>
