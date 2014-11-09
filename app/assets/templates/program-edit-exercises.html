@@ -1,0 +1,15 @@
+<div class="col-xs-10 col-sm-5">
+    <div class="form-group">
+        <select class="program-exercise form-control" name="program_exercise">
+            <option value="">Select</option>
+            <% exercises.each(function (e) { %>
+            <option value="<%= e.get('exercise_id') %>"><%= e.get("name") %></option>
+            <% }); %>
+        </select>
+    </div>
+</div>
+<div class="col-xs-2 col-sm-1">
+    <button class="js-remove-exercise btn btn-danger pull-right">
+        <i class="glyphicon glyphicon-minus"></i>
+    </button>
+</div>Á
