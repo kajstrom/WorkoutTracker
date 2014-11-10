@@ -33,11 +33,13 @@ require_once "../src/TemplateLoader.php";
 </div>
 
 <div class="container-fluid">
-    <div class="col-md-2 menu-region">
+    <div class="row">
+        <div class="col-md-2 menu-region">
 
-    </div>
-    <div class="col-md-10 main-region">
-        <h1>Content be here</h1>
+        </div>
+        <div class="col-md-10 main-region">
+            <h1>Content be here</h1>
+        </div>
     </div>
 </div>
 
