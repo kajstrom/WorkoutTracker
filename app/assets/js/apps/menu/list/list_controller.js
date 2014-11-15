@@ -6,6 +6,11 @@ WorkoutTracker.module("MenuApp.List", function (List, WorkoutTracker, Backbone, 
 				collection: menuItems
 			});
 
+			menuView.on("childview:navigate", function (childView, model) {
+				var trigger = model.get("navigationTrigger");
+				WorkoutTracker.trigger(trigger);
+			});
+
 			WorkoutTracker.menuRegion.show(menuView);
 		},
 

@@ -19,11 +19,13 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 				{
 					name: "Programs",
 					url: "programs",
+					navigationTrigger: "programs:list",
 					is_active: false
 				},
 				{
 					name: "Exercises",
 					url: "exercises",
+					navigationTrigger: "exercises:list",
 					is_active: false
 				}
 			]);

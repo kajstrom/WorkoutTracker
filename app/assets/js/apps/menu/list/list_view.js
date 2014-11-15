@@ -3,6 +3,15 @@ WorkoutTracker.module("MenuApp.List", function (List, WorkoutTracker, Backbone, 
 		tagName: "li",
 		template: "#menu-item",
 
+		events: {
+			"click a": "navigate"
+		},
+
+		navigate: function (e) {
+			e.preventDefault();
+			this.trigger("navigate", this.model)
+		},
+
 		onRender: function () {
 			if (this.model.get("is_active")) {
 				this.$el.addClass("active");
