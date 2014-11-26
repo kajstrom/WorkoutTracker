@@ -18,11 +18,21 @@ WorkoutTracker.module("ProgramsApp.List", function (List, WorkoutTracker, Backbo
         addProgram: function () {
             WorkoutTracker.trigger("programs:new");
         }
+
     });
 
     List.TableRow = Marionette.ItemView.extend({
         tagName: "tr",
-        template: "#program-list-table-row"
+        template: "#program-list-table-row",
+        events: {
+            "click .js-delete": "deleteClicked"
+        },
+
+        deleteClicked: function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.model.destroy();
+        }
     });
 
     List.Table = Marionette.CompositeView.extend({
