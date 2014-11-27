@@ -41,5 +41,5 @@ WorkoutTracker.module("ProgramsApp.List", function (List, WorkoutTracker, Backbo
         className: "table table-striped table-bordered",
         childViewContainer: "tbody",
         childView: List.TableRow
-    })
+    });
 });
