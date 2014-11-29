@@ -53,6 +53,7 @@ require_once "../src/TemplateLoader.php";
 <script src="../bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
 <script src="../bower_components/marionette/lib/core/backbone.marionette.js"></script>
 <script src="../bower_components/backbone.syphon/lib/backbone.syphon.js"></script>
+<script src="../bower_components/moment/min/moment.min.js"></script>
 
 <!-- Application files -->
 <script src="assets/js/app.js"></script>
@@ -79,6 +80,12 @@ require_once "../src/TemplateLoader.php";
 <script src="assets/js/apps/programs/programs_app.js"></script>
 <script src="assets/js/entities/program.js"></script>
 <script src="assets/js/entities/program_exercise.js"></script>
+
+<script src="assets/js/apps/workouts/list/list_controller.js"></script>
+<script src="assets/js/apps/workouts/list/list_view.js"></script>
+<script src="assets/js/apps/workouts/workout_app.js"></script>
+<script src="assets/js/entities/workout.js"></script>
+
 
 <?php
 

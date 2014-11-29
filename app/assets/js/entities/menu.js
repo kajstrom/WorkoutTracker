@@ -27,7 +27,13 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 					url: "exercises",
 					navigationTrigger: "exercises:list",
 					is_active: false
-				}
+				},
+                {
+                    name: "Workouts",
+                    url: "workouts",
+                    navigationTrigger: "workouts:list",
+                    is_active: false
+                }
 			]);
 
 			return menu;
