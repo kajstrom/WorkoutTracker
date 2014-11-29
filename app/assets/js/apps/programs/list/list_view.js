@@ -25,7 +25,14 @@ WorkoutTracker.module("ProgramsApp.List", function (List, WorkoutTracker, Backbo
         tagName: "tr",
         template: "#program-list-table-row",
         events: {
+            "click .js-edit": "editClicked",
             "click .js-delete": "deleteClicked"
+        },
+
+        editClicked: function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            WorkoutTracker.trigger("programs:edit", {model: this.model});
         },
 
         deleteClicked: function (e) {

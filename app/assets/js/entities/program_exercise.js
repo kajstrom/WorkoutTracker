@@ -20,8 +20,8 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
     });
 
     var API = {
-        getProgramExerciseEntities: function(){
-            var exercises = new Entities.ProgramExerciseCollection();
+        getProgramExerciseEntities: function(program_id){
+            var exercises = new Entities.ProgramExerciseCollection({program_id: program_id});
             var defer = $.Deferred();
             exercises.fetch({
                 success: function(data){
@@ -33,7 +33,7 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
         }
     };
 
-    WorkoutTracker.reqres.setHandler("programExercise:entities", function(){
-        return API.getProgramExerciseEntities();
+    WorkoutTracker.reqres.setHandler("programExercise:entities", function(program_id){
+        return API.getProgramExerciseEntities(program_id);
     });
 });

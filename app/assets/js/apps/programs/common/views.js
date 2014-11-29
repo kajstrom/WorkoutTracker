@@ -23,6 +23,10 @@ WorkoutTracker.module("ProgramsApp.Common.Views", function (Views, WorkoutTracke
             WorkoutTracker.trigger("programs:list");
         },
 
+        onRender: function () {
+            Backbone.Syphon.deserialize(this, this.model.toJSON());
+        },
+
         saveClicked: function () {
             var self = this;
             var formData = Backbone.Syphon.serialize(this);
@@ -59,6 +63,12 @@ WorkoutTracker.module("ProgramsApp.Common.Views", function (Views, WorkoutTracke
 
         setExercise: function (e) {
             this.model.set("exercise_id", $(e.target).val());
+        },
+
+        onRender: function () {
+            if (!this.model.isNew()) {
+                this.$("select").val(this.model.get("exercise_id"));
+            }
         },
 
         removeExerciseClicked: function () {
