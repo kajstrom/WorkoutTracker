@@ -12,7 +12,7 @@ WorkoutTracker.module("ExercisesApp.List", function (List, WorkoutTracker, Backb
 
 			var retrievingExercies = WorkoutTracker.request("exercise:entities");
 
-			$.when(retrievingExercies).done(function(collection) {
+			retrievingExercies.then(function(collection) {
 				var tableView = new List.Table({
 					collection: collection
 				});

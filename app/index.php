@@ -27,7 +27,7 @@ require_once "../src/TemplateLoader.php";
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-10 col-md-offset-2">
-            <h1> WorkOutTracker</h1>
+            <h1> WorkoutTracker</h1>
         </div>
     </div>
 </div>

@@ -7,21 +7,24 @@ WorkoutTracker.module("ProgramsApp.Edit", function (Edit, WorkoutTracker, Backbo
                 args.model.get("program_id")
             );
 
-            $.when(retrievingExercises).done(function (exerciseCollection) {
-                $.when(retrievingProgramExercises).done(function (programExerciseCollection) {
-                    var form = new WorkoutTracker.ProgramsApp.Common.Views.Form({
-                        model: args.model,
-                        collection: programExerciseCollection,
-                        childView: WorkoutTracker.ProgramsApp.Common.Views.ProgramExercise,
-                        childViewContainer: ".program-exercises-container",
-                        childViewOptions: {
-                            exercises: exerciseCollection
-                        }
-                    });
+			var promises = [retrievingExercises, retrievingProgramExercises];
 
-                    WorkoutTracker.mainRegion.show(form);
-                });
-            });
+			Promise.all(promises).then(function (data) {
+				var exerciseCollection = data[0];
+				var programExerciseCollection = data[1];
+
+				var form = new WorkoutTracker.ProgramsApp.Common.Views.Form({
+					model: args.model,
+					collection: programExerciseCollection,
+					childView: WorkoutTracker.ProgramsApp.Common.Views.ProgramExercise,
+					childViewContainer: ".program-exercises-container",
+					childViewOptions: {
+						exercises: exerciseCollection
+					}
+				});
+
+				WorkoutTracker.mainRegion.show(form);
+			});
         }
     };
 });

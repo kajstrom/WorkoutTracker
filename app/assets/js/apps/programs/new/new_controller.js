@@ -1,9 +1,9 @@
 WorkoutTracker.module("ProgramsApp.New", function (New, WorkoutTracker, Backbone, Marionette, $, _) {
     New.Controller = {
         newProgram: function () {
-            var retrievingExercies = WorkoutTracker.request("exercise:entities");
+            var retrievingExercises = WorkoutTracker.request("exercise:entities");
 
-            $.when(retrievingExercies).done(function(exerciseCollection) {
+            retrievingExercises.then(function(exerciseCollection) {
                 var model = new WorkoutTracker.Entities.Program();
                 var form = new WorkoutTracker.ProgramsApp.Common.Views.Form({
                     model: model,

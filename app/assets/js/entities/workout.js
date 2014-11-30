@@ -12,15 +12,17 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
     var API = {
         getWorkoutEntities: function(){
             var workouts = new Entities.WorkoutCollection();
-            var defer = $.Deferred();
+            var promise = new Promise(
+				function (resolve, reject) {
+					workouts.fetch({
+						success: function(data){
+							resolve(data);
+						}
+					});
+				}
+			);
 
-            workouts.fetch({
-                success: function(data){
-                    defer.resolve(data);
-                }
-            });
-
-            return defer.promise();
+            return promise;
         }
     };
 

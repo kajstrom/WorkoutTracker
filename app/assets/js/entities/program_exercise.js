@@ -22,14 +22,17 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
     var API = {
         getProgramExerciseEntities: function(program_id){
             var exercises = new Entities.ProgramExerciseCollection({program_id: program_id});
-            var defer = $.Deferred();
-            exercises.fetch({
-                success: function(data){
-                    defer.resolve(data);
-                }
-            });
+            var promise = new Promise(
+				function (resolve, reject) {
+					exercises.fetch({
+						success: function(data){
+							resolve(data);
+						}
+					});
+				}
+			);
 
-            return defer.promise();
+            return promise;
         }
     };
 
