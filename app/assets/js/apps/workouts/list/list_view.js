@@ -10,12 +10,25 @@ WorkoutTracker.module("WorkoutsApp.List", function (List, WorkoutTracker, Backbo
 
     List.Filter = Marionette.ItemView.extend({
         className: "row",
-        template: "#workout-list-filter"
+        template: "#workout-list-filter",
+
+        events: {
+            "click .js-add": "addClicked"
+        },
+
+        addClicked: function (e) {
+            e.preventDefault();
+            WorkoutTracker.trigger("workouts:new");
+        }
     });
 
     List.TableRow = Marionette.ItemView.extend({
         tagName: "tr",
         template: "#workout-list-table-row",
+
+        events: {
+            "click .js-edit": "editClicked"
+        },
 
         templateHelpers: function () {
             return {
@@ -26,6 +39,12 @@ WorkoutTracker.module("WorkoutsApp.List", function (List, WorkoutTracker, Backbo
                     return moment.utc(end.diff(start)).format("HH:mm");
                 }
             };
+        },
+
+        editClicked: function (e) {
+            e.preventDefault();
+            console.log("edit");
+            Work
         }
     });
 

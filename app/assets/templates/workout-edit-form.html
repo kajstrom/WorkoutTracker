@@ -1,0 +1,42 @@
+<form>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="workoutDate">Date</label>
+                    <input type="text" name="date" id="workoutDate" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="workoutComments">Comments</label>
+                    <textarea class="form-control" name="comments" id="workoutComments" rows="4">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label for="workoutStartTime">Start time</label>
+                    <input type="text" name="start_time" id="workoutStartTime" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="workoutEndTime">End time</label>
+                    <input type="text" name="end_time" id="workoutEndTime" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="workoutWeight">Weight</label>
+                    <input type="text" name="user_weight" id="workoutWeight" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="workoutRHR">RHR</label>
+                    <input type="text" name="user_rhr" id="workoutRHR" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-success js-save" type="button">Save</button>
+                <button class="btn btn-warning js-cancel" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>
