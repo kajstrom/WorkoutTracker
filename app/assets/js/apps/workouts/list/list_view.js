@@ -27,12 +27,13 @@ WorkoutTracker.module("WorkoutsApp.List", function (List, WorkoutTracker, Backbo
         template: "#workout-list-table-row",
 
         events: {
-            "click .js-edit": "editClicked"
+            "click .js-edit": "editClicked",
+            "click .js-delete": "deleteClicked"
         },
 
         templateHelpers: function () {
             return {
-                getDuration: function(){
+                getDuration: function () {
                     var start = moment(this.start_time, "YYYY-DD-MM HH:mm");
                     var end = moment(this.end_time, "YYYY-DD-MM HH:mm");
 
@@ -43,8 +44,12 @@ WorkoutTracker.module("WorkoutsApp.List", function (List, WorkoutTracker, Backbo
 
         editClicked: function (e) {
             e.preventDefault();
-            console.log("edit");
-            Work
+        },
+
+        deleteClicked: function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.model.destroy();
         }
     });
 
