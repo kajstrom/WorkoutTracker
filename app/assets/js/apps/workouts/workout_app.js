@@ -13,6 +13,10 @@ WorkoutTracker.module("WorkoutsApp", function (WorkoutsApp, WorkoutTracker, Back
 
         newWorkout: function () {
             WorkoutsApp.New.Controller.newWorkout();
+        },
+
+        editWorkout: function (args) {
+            WorkoutsApp.Edit.Controller.editWorkout(args);
         }
     };
 
@@ -25,6 +29,11 @@ WorkoutTracker.module("WorkoutsApp", function (WorkoutsApp, WorkoutTracker, Back
     WorkoutTracker.on("workouts:new", function () {
         WorkoutTracker.navigate("workouts/new");
         API.newWorkout();
+    });
+
+    WorkoutTracker.on("workouts:edit", function (args) {
+        WorkoutTracker.navigate("workouts/edit");
+        API.editWorkout(args);
     });
 
     WorkoutTracker.addInitializer(function () {

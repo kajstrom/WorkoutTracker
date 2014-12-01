@@ -38,12 +38,17 @@ WorkoutTracker.module("WorkoutsApp.List", function (List, WorkoutTracker, Backbo
                     var end = moment(this.end_time, "YYYY-DD-MM HH:mm");
 
                     return moment.utc(end.diff(start)).format("HH:mm");
+                },
+
+                getFormattedDate: function () {
+                    return moment(this.date).format("DD.MM.YYYY");
                 }
             };
         },
 
         editClicked: function (e) {
             e.preventDefault();
+            WorkoutTracker.trigger("workouts:edit", { model: this.model });
         },
 
         deleteClicked: function (e) {
