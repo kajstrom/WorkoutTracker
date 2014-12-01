@@ -1,7 +1,15 @@
 WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, Marionette, $, _) {
     Entities.Workout = Backbone.Model.extend({
         urlRoot: "api/workouts",
-        idAttribute: "workout_id"
+        idAttribute: "workout_id",
+        defaults: {
+            date: moment().format("YYYY-MM-DD"),
+            comments: "",
+            start_time: "",
+            end_time: "",
+            user_weight: 0,
+            user_rhr: 0
+        }
     });
 
     Entities.WorkoutCollection = Backbone.Collection.extend({
