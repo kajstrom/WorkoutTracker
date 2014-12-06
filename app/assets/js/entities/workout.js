@@ -8,7 +8,8 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
             start_time: "",
             end_time: "",
             user_weight: 0,
-            user_rhr: 0
+            user_rhr: 0,
+			program_id: null
         }
     });
 
