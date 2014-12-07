@@ -1,6 +1,6 @@
 <form role="form">
-  <div class="col-xs-10 col-sm-5">
-    <div class="form-group">
+  <div class="col-xs-12 col-sm-6">
+    <div class="form-group form-inline">
       <%- order_number %>.
       <select class="form-control exercise-select" name="exercise_id" >
         <option value="">No exercise selected</option>
@@ -8,15 +8,20 @@
         <option value="<%= e.get('exercise_id') %>"><%= e.get("name") %></option>
         <% }); %>
       </select>
+      <button class="js-delete btn btn-danger">
+        <i class="glyphicon glyphicon-minus"></i>
+      </button>
     </div>
+    <div class="form-group exercise-sets">
+      <h2>Sets go here</h2>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
     <div class="form-group">
       <label for="instructions">
         Instructions
       </label>
       <textarea class="form-control" row="3" name="instructions"></textarea>
-    </div>
-    <div class="form-group exercise-sets">
-      <h2>Sets go here</h2>
     </div>
     <div class="form-group">
       <label for="comment">
