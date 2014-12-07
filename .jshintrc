@@ -1,0 +1,13 @@
+{
+    "curly": true,
+    "undef": true,
+    "unused": true,
+    "globals": {
+        "jQuery": true,
+        "Backbone": true,
+        "_": true,
+        "Marionette": true,
+        "WorkoutTracker": true,
+        "moment": true
+    }
+}
