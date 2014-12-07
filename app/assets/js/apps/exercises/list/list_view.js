@@ -30,7 +30,7 @@ WorkoutTracker.module("ExercisesApp.List", function (List, WorkoutTracker, Backb
 
 		editClicked: function (e) {
 			e.preventDefault();
-			WorkoutTracker.trigger("exercises:edit", {model: this.model});
+			WorkoutTracker.trigger("exercises:edit", this.model.id);
 		},
 
 		deleteClicked: function (e) {

@@ -1,11 +1,15 @@
 WorkoutTracker.module("ExercisesApp.Edit", function (Edit, WorkoutTracker, Backbone, Marionette, $, _) {
 	Edit.Controller = {
-		editExercise: function (model) {
-			var formView = new WorkoutTracker.ExercisesApp.Common.Views.Form({
-				model: model
-			});
+		editExercise: function (exerciseId) {
+            var retrievingExercise = WorkoutTracker.request("exercise:entity", exerciseId);
 
-			WorkoutTracker.mainRegion.show(formView);
+            retrievingExercise.then(function(model) {
+                var formView = new WorkoutTracker.ExercisesApp.Common.Views.Form({
+                    model: model
+                });
+
+                WorkoutTracker.mainRegion.show(formView);
+            });
 		}
 	};
 });

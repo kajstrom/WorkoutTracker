@@ -3,7 +3,7 @@ WorkoutTracker.module("ExercisesApp", function (ExercisesApp, WorkoutTracker, Ba
 		appRoutes: {
 			"exercises": "listExercises",
 			"exercises/new": "newExercise",
-			"exercises/edit": "editExercise"
+			"exercises/edit/:id": "editExercise"
 		}
 	});
 
@@ -14,8 +14,8 @@ WorkoutTracker.module("ExercisesApp", function (ExercisesApp, WorkoutTracker, Ba
 		newExercise: function () {
 			ExercisesApp.New.Controller.newExercise();
 		},
-		editExercise: function (model) {
-			ExercisesApp.Edit.Controller.editExercise(model);
+		editExercise: function (exerciseId) {
+			ExercisesApp.Edit.Controller.editExercise(exerciseId);
 		}
 	};
 
@@ -29,10 +29,9 @@ WorkoutTracker.module("ExercisesApp", function (ExercisesApp, WorkoutTracker, Ba
 		API.newExercise();
 	});
 
-	WorkoutTracker.on("exercises:edit", function(attrs) {
-		//@todo Change this to support the id too?
-		WorkoutTracker.navigate("exercises/edit");
-		API.editExercise(attrs.model);
+	WorkoutTracker.on("exercises:edit", function(exerciseId) {
+		WorkoutTracker.navigate("exercises/edit/" + exerciseId);
+		API.editExercise(exerciseId);
 	});
 
 	WorkoutTracker.addInitializer(function () {

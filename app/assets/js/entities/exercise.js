@@ -23,10 +23,28 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 			);
 
 			return promise;
-		}
+		},
+
+        getExerciseEntityById: function (exerciseId) {
+            var exercise = new Entities.Exercise({exercise_id: exerciseId});
+
+            return new Promise(
+                function (resolve, reject) {
+                    exercise.fetch({
+                        success: function(data){
+                            resolve(data);
+                        }
+                    });
+                }
+            );
+        }
 	};
 
 	WorkoutTracker.reqres.setHandler("exercise:entities", function(){
 		return API.getExerciseEntities();
 	});
+
+    WorkoutTracker.reqres.setHandler("exercise:entity", function(exerciseId){
+        return API.getExerciseEntityById(exerciseId);
+    });
 });
