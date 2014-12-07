@@ -25,9 +25,14 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 
 	Entities.WorkoutExerciseCollection = Backbone.Collection.extend({
 		url: function () {
-			return "api/workouts/" + this.options.workoutId + "/exercises"
+			return "api/workouts/" + this.workoutId + "/exercises"
 		},
-		model: Entities.WorkoutExercise
+
+		model: Entities.WorkoutExercise,
+
+		initialize: function (data, options) {
+			this.workoutId = options.workoutId;
+		}
 	});
 
 	var API = {

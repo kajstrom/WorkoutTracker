@@ -49,6 +49,10 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 			return modelAttributes;
 		},
 
+		onRender: function () {
+			Backbone.Syphon.deserialize(this, this.model.toJSON());
+		},
+
 		saveModel: function () {
 			var formAttrs = Backbone.Syphon.serialize(this);
 			this.model.set(formAttrs);
