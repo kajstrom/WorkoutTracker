@@ -39,7 +39,8 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 		template: "#workout-exercise-view",
 		events: {
 			"change .exercise-select": "saveModel",
-			"blur textarea": "saveModel"
+			"blur textarea": "saveModel",
+			"click .js-delete": "deleteExercise"
 		},
 
 		serializeData: function () {
@@ -60,6 +61,11 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 			if (this.model.isValid()) {
 				this.model.save();
 			}
+		},
+
+		deleteExercise: function (e) {
+			e.preventDefault();
+			this.model.destroy();
 		}
 	});
 
