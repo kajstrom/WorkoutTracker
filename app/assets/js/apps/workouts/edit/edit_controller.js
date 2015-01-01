@@ -22,6 +22,7 @@ WorkoutTracker.module("WorkoutsApp.Edit", function (Edit, WorkoutTracker, Backbo
 				var workoutExercisesView = new WorkoutTracker.WorkoutsApp.Common.Views.Exercises({
 					collection: workoutExerciseCollection,
 					exerciseCollection: exerciseCollection,
+					exerciseSetsCollection: workoutSetCollection,
 					model: model
 				});
 
