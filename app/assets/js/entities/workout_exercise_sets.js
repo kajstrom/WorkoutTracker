@@ -54,7 +54,6 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 		},
 
 		getWorkoutSetEntities: function(workoutId){
-			console.log(workoutId);
 			var workoutSets = new Entities.WorkoutSetsCollection(null, {
 				workoutId: workoutId
 			});
@@ -62,7 +61,6 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 				function (resolve, reject) {
 					workoutSets.fetch({
 						success: function(data){
-							console.log("asdas");
 							resolve(data);
 						}
 					});

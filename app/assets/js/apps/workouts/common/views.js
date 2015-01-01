@@ -137,13 +137,21 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 	Views.ExerciseSetsView = Marionette.ItemView.extend({
 		template: "#workout-exercise-set",
 		events: {
-			"blur input": "save"
+			"blur input": "save",
+			"click .js-delete": "delete"
 		},
 
 		save: function () {
 			var formData = Backbone.Syphon.serialize(this);
 			this.model.set(formData);
 			this.model.save();
+		},
+
+		delete: function (e) {
+			e.stopPropagation();
+			e.preventDefault();
+
+			this.model.destroy();
 		}
 	});
 
