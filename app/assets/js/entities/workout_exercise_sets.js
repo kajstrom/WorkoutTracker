@@ -14,13 +14,24 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 
 	Entities.WorkoutExerciseSetCollection = Backbone.Collection.extend({
 		url: function () {
-			return  "/workoutexercise/" + this.workoutExerciseId + "/sets";
+			return  "api/workoutexercise/" + this.workoutExerciseId + "/sets";
 		},
 
 		model: Entities.WorkoutExerciseSet,
 
 		initialize: function (data, options) {
-			this.workoutId = options.workoutExerciseId;
+			this.workoutExerciseId = options.workoutExerciseId;
+		}
+	});
+
+	Entities.WorkoutSetsCollection = Backbone.Collection.extend({
+		url: function () {
+			return "api/workout/" + this.workoutId + "/exercise/sets";
+		},
+		model: Entities.WorkoutExerciseSet,
+
+		initialize: function (data, options) {
+			this.workoutId = options.workoutId;
 		}
 	});
 
@@ -40,10 +51,33 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
 			);
 
 			return promise;
+		},
+
+		getWorkoutSetEntities: function(workoutId){
+			console.log(workoutId);
+			var workoutSets = new Entities.WorkoutSetsCollection(null, {
+				workoutId: workoutId
+			});
+			var promise = new Promise(
+				function (resolve, reject) {
+					workoutSets.fetch({
+						success: function(data){
+							console.log("asdas");
+							resolve(data);
+						}
+					});
+				}
+			);
+
+			return promise;
 		}
 	};
 
-	WorkoutTracker.reqres.setHandler("workout:exercise:sets:entities", function(workoutExerciseSetId){
+	WorkoutTracker.reqres.setHandler("workout:exercise:sets:entities", function(workoutExerciseId){
+		return API.getWorkoutExerciseSetEntities(workoutExerciseId);
+	});
 
+	WorkoutTracker.reqres.setHandler("workout:sets:entities", function (workoutId) {
+		return API.getWorkoutSetEntities(workoutId);
 	});
 });

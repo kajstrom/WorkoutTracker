@@ -10,12 +10,14 @@ WorkoutTracker.module("WorkoutsApp.Edit", function (Edit, WorkoutTracker, Backbo
 
 			var retrievingExercises = WorkoutTracker.request("exercise:entities");
 			var retrievingWorkoutExercises = WorkoutTracker.request("workout:exercise:entities", model.get("workout_id"));
+			var retrievingWorkoutExerciseSets = WorkoutTracker.request("workout:sets:entities", model.get("workout_id"));
 
-			var promises = [retrievingExercises, retrievingWorkoutExercises];
+			var promises = [retrievingExercises, retrievingWorkoutExercises, retrievingWorkoutExerciseSets];
 
 			Promise.all(promises).then(function (promiseResults) {
 				var exerciseCollection = promiseResults[0];
 				var workoutExerciseCollection = promiseResults[1];
+				var workoutSetCollection = promiseResults[2];
 
 				var workoutExercisesView = new WorkoutTracker.WorkoutsApp.Common.Views.Exercises({
 					collection: workoutExerciseCollection,
