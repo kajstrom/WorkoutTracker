@@ -25,10 +25,12 @@ WorkoutTracker.module("WorkoutsApp.New", function (New, WorkoutTracker, Backbone
 			Promise.all(promises).then(function (data) {
 				var exerciseCollection = data[0];
 
-				var workoutExerciseCollection = new WorkoutTracker.Entities.WorkoutExerciseCollection();
+				var workoutExerciseCollection = new WorkoutTracker.Entities.WorkoutExerciseCollection([], model.get("workout_id"));
+				var workoutExerciseSetsCollection = new Backbone.Collection();
 				var workoutExercisesView = new WorkoutTracker.WorkoutsApp.Common.Views.Exercises({
 					collection: workoutExerciseCollection,
 					exerciseCollection: exerciseCollection,
+					exerciseSetsCollection: workoutExerciseSetsCollection,
 					model: model
 				});
 
@@ -37,7 +39,9 @@ WorkoutTracker.module("WorkoutsApp.New", function (New, WorkoutTracker, Backbone
 					this.exercisesRegion.show(workoutExercisesView);
 				});
 
+
 				WorkoutTracker.mainRegion.show(formLayout);
+			}, function (reason) {
 			});
         }
     };

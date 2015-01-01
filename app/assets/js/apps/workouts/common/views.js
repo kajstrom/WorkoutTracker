@@ -34,13 +34,17 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
         }
     });
 
-	Views.ExerciseView = Marionette.ItemView.extend({
+	Views.ExerciseView = Marionette.LayoutView.extend({
 		className: "row",
 		template: "#workout-exercise-view",
 		events: {
 			"change .exercise-select": "saveModel",
 			"blur textarea": "saveModel",
 			"click .js-delete": "deleteExercise"
+		},
+
+		regions: {
+			sets: ".exercise-sets"
 		},
 
 		serializeData: function () {
@@ -52,15 +56,33 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 
 		onRender: function () {
 			Backbone.Syphon.deserialize(this, this.model.toJSON());
+
+			if (!this.model.isNew()) {
+				this.showSets();
+			}
 		},
 
 		saveModel: function () {
+			var self = this;
 			var formAttrs = Backbone.Syphon.serialize(this);
 			this.model.set(formAttrs);
 
 			if (this.model.isValid()) {
-				this.model.save();
+				this.model.save(null, {
+					success: function () {
+						self.showSets();
+					}
+				});
 			}
+		},
+
+		showSets: function () {
+			var exerciseSetsView = new Views.ExerciseSetsView({
+				collection: this.options.exerciseSetsCollection,
+				model: this.model
+			});
+
+			this.sets.show(exerciseSetsView);
 		},
 
 		deleteExercise: function (e) {
@@ -77,10 +99,25 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 		template: "#workout-exercises",
 		childView: Views.ExerciseView,
 		childViewContainer: ".exercise-container",
-		childViewOptions: function () {
-			return {
+		childViewOptions: function (model, index) {
+			var options = {
 				exerciseCollection: this.options.exerciseCollection
+			};
+
+			if (model !== undefined) {
+				options.exerciseSetsCollection = new WorkoutTracker.Entities.WorkoutExerciseSetCollection(
+					this.options.exerciseSetsCollection.where({workout_exercise_id: model.get("workout_exercise_id")}),
+					{
+						workoutExerciseId: model.get("workout_exercise_id")
+					}
+				);
+			} else {
+				options.exerciseSetsCollection = new WorkoutTracker.Entities.WorkoutExerciseSetCollection([], {
+					workoutExerciseId: this.model.get("workout_exercise_id")
+				})
 			}
+
+			return options;
 		},
 		emptyView: Views.NoExercisesView,
 		events: {
@@ -94,6 +131,46 @@ WorkoutTracker.module("WorkoutsApp.Common.Views", function (Views, WorkoutTracke
 			});
 
 			this.collection.add(workoutExercise);
+		}
+	});
+
+	Views.ExerciseSetsView = Marionette.ItemView.extend({
+		template: "#workout-exercise-set",
+		events: {
+			"blur input": "save"
+		},
+
+		save: function () {
+			var formData = Backbone.Syphon.serialize(this);
+			this.model.set(formData);
+			this.model.save();
+		}
+	});
+
+	Views.NoExerciseSetsView = Marionette.ItemView.extend({
+		template: "#workout-exercise-nosets"
+	});
+
+	Views.ExerciseSetsView = Marionette.CompositeView.extend({
+		template: "#workout-exercise-sets",
+		childView: Views.ExerciseSetsView,
+		childViewContainer: ".set-container",
+		emptyView: Views.NoExerciseSetsView,
+		events: {
+			"click .js-add-set": "addSet"
+		},
+
+		addSet: function (e) {
+			e.preventDefault();
+
+			var newSet = new WorkoutTracker.Entities.WorkoutExerciseSet({
+				set_number: this.collection.length + 1,
+				workout_exercise_id: this.model.get("workout_exercise_id")
+			});
+
+			newSet.save();
+
+			this.collection.add(newSet);
 		}
 	});
 });

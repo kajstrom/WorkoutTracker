@@ -89,6 +89,7 @@ require_once "../src/TemplateLoader.php";
 <script src="assets/js/apps/workouts/workout_app.js"></script>
 <script src="assets/js/entities/workout.js"></script>
 <script src="assets/js/entities/workout_exercise.js"></script>
+<script src="assets/js/entities/workout_exercise_sets.js"></script>
 
 
 <?php
