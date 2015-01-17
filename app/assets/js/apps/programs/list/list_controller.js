@@ -12,12 +12,12 @@ WorkoutTracker.module("ProgramsApp.List", function (List, WorkoutTracker, Backbo
 
             var retrievingPrograms = WorkoutTracker.request("program:entities");
 
-            retrievingPrograms.then(function(collection) {
-                var tableView = new List.Table({
+            retrievingPrograms.then(function (collection) {
+                var gridView = new List.Grid({
                     collection: collection
                 });
 
-                layoutView.listRegion.show(tableView);
+                layoutView.listRegion.show(gridView);
             });
         }
     };
