@@ -48,7 +48,7 @@ WorkoutTracker.module("WorkoutsApp.List", function (List, WorkoutTracker, Backbo
 
         editClicked: function (e) {
             e.preventDefault();
-            WorkoutTracker.trigger("workouts:edit", { model: this.model });
+            WorkoutTracker.trigger("workouts:edit", this.model.get("workout_id"));
         },
 
         deleteClicked: function (e) {

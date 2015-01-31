@@ -2,7 +2,8 @@ WorkoutTracker.module("WorkoutsApp", function (WorkoutsApp, WorkoutTracker, Back
     WorkoutsApp.Router = Marionette.AppRouter.extend({
         appRoutes: {
             "workouts": "listWorkouts",
-            "workouts/new": "newWorkout"
+            "workouts/new": "newWorkout",
+            "workouts/edit/:id": "editWorkout"
         }
     });
 
@@ -15,8 +16,8 @@ WorkoutTracker.module("WorkoutsApp", function (WorkoutsApp, WorkoutTracker, Back
             WorkoutsApp.New.Controller.newWorkout();
         },
 
-        editWorkout: function (args) {
-            WorkoutsApp.Edit.Controller.editWorkout(args);
+        editWorkout: function (workoutId) {
+            WorkoutsApp.Edit.Controller.editWorkout(workoutId);
         }
     };
 
@@ -31,9 +32,9 @@ WorkoutTracker.module("WorkoutsApp", function (WorkoutsApp, WorkoutTracker, Back
         API.newWorkout();
     });
 
-    WorkoutTracker.on("workouts:edit", function (args) {
-        WorkoutTracker.navigate("workouts/edit");
-        API.editWorkout(args);
+    WorkoutTracker.on("workouts:edit", function (workoutId) {
+        WorkoutTracker.navigate("workouts/edit/" + workoutId);
+        API.editWorkout(workoutId);
     });
 
     WorkoutTracker.addInitializer(function () {
