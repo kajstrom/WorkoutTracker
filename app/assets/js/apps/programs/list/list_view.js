@@ -81,7 +81,7 @@ WorkoutTracker.module("ProgramsApp.List", function (List, WorkoutTracker, Backbo
         editClicked: function (e) {
             e.preventDefault();
             e.stopPropagation();
-            WorkoutTracker.trigger("programs:edit", {model: this.model});
+            WorkoutTracker.trigger("programs:edit", this.model.get("program_id"));
         },
 
         deleteClicked: function (e) {

@@ -10,6 +10,20 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
     });
 
     var API = {
+        getProgramEntity: function (programId) {
+            var exercise = new Entities.Program({program_id: programId});
+            var promise = new Promise(
+                function (resolve, reject) {
+                    exercise.fetch({
+                        success: function(data){
+                            resolve(data);
+                        }
+                    });
+                }
+            );
+
+            return promise;
+        },
         getProgramEntities: function(){
             var exercises = new Entities.ProgramCollection();
             var promise = new Promise(
@@ -25,6 +39,10 @@ WorkoutTracker.module("Entities", function (Entities, WorkoutTracker, Backbone, 
             return promise;
         }
     };
+
+    WorkoutTracker.reqres.setHandler("program:entity", function (programId) {
+        return API.getProgramEntity(programId);
+    });
 
     WorkoutTracker.reqres.setHandler("program:entities", function(){
         return API.getProgramEntities();

@@ -2,7 +2,8 @@ WorkoutTracker.module("ProgramsApp", function (ProgramsApp, WorkoutTracker, Back
     ProgramsApp.Router = Marionette.AppRouter.extend({
         appRoutes: {
             "programs": "listPrograms",
-            "programs/new": "newProgram"
+            "programs/new": "newProgram",
+            "programs/edit/:id": "editProgram"
         }
     });
 
@@ -15,8 +16,8 @@ WorkoutTracker.module("ProgramsApp", function (ProgramsApp, WorkoutTracker, Back
             ProgramsApp.New.Controller.newProgram();
         },
 
-        editProgram: function (args) {
-            ProgramsApp.Edit.Controller.editProgram(args);
+        editProgram: function (programId) {
+            ProgramsApp.Edit.Controller.editProgram(programId);
         }
     };
 
@@ -31,9 +32,9 @@ WorkoutTracker.module("ProgramsApp", function (ProgramsApp, WorkoutTracker, Back
         API.newProgram();
     });
 
-    WorkoutTracker.on("programs:edit", function (args) {
-        WorkoutTracker.navigate("programs/edit");
-        API.editProgram(args);
+    WorkoutTracker.on("programs:edit", function (programId) {
+        WorkoutTracker.navigate("programs/edit/" + programId);
+        API.editProgram(programId);
     });
 
     WorkoutTracker.addInitializer(function () {
